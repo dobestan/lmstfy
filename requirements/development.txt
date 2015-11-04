@@ -1,1 +1,12 @@
 -r production.txt
+
+# Test
+flake8
+
+# Django
+django-extensions
+django-debug-toolbar
+
+# Miscellaneous
+ipython[all]
+Werkzeug
