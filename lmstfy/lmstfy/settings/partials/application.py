@@ -25,6 +25,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'multisites',
+    'search',
 )
 
 MIDDLEWARE_CLASSES = (

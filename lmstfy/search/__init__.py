@@ -3,4 +3,4 @@
 # This app manages search history and related features.
 
 
-default_app_config = 'multisites.apps.MultisitesAppConfig'
+default_app_config = 'search.apps.SearchAppConfig'
