@@ -10,7 +10,7 @@ clean:
 
 # target: migrate - Migrate all django applications considering app dependencies
 migrate:
-	python lmstfy/manage.py makemigrations multisites
+	python lmstfy/manage.py makemigrations multisites search
 	python lmstfy/manage.py migrate
 
 
