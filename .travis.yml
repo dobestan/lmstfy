@@ -3,9 +3,13 @@ python:
     - '3.3'
     - '3.4'
     - '3.5'
+addons:
+    postgresql: '9.4'
 install:
     - pip install -r requirements.txt
     - pip install -r requirements/tests.txt
+before_script:
+    - psql -c 'CREATE DATABASE lmstfy;' -U postgres
 script:
     - make migrate
     - make test

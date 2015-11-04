@@ -1,5 +1,7 @@
 import os
 
+import dj_database_url
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 PROJECT_ROOT = os.path.dirname(os.path.dirname(BASE_DIR))
@@ -58,11 +60,14 @@ WSGI_APPLICATION = 'lmstfy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+# dj-database-url
+# https://github.com/kennethreitz/dj-database-url/
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(default=os.environ.get(
+        'DATABASE_URL',
+        'postgres://:@127.0.0.1:5432/lmstfy'
+    )),
 }
 
 
