@@ -17,3 +17,9 @@ migrate:
 # target: clean_migration - folders in all django apps
 clean_migrations:
 	ls lmstfy/ | grep -v -e 'manage.py' | xargs -I{} rm -rf lmstfy/{}/migrations/
+
+
+# target: test - execute project related tests including coding convention and unittest
+test:
+	flake8 lmstfy/
+	lmstfy/manage.py test -v 2

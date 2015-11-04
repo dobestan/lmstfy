@@ -1,7 +1,5 @@
 -r production.txt
-
-# Test
-flake8
+-r tests.txt
 
 # Django
 django-extensions
