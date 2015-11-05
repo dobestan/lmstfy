@@ -20,3 +20,11 @@ SHELL_PLUS = "ipython"
 # https://django-nose.readthedocs.org
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+NOSE_ARGS = [
+    '--verbosity=2',
+
+    '--with-coverage',
+    '--cover-package=lmstfy,multisites,search',
+    '--cover-inclusive',
+]

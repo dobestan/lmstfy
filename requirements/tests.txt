@@ -1,2 +1,3 @@
 flake8
 django_nose
+coverage
