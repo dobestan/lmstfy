@@ -7,7 +7,7 @@ addons:
     postgresql: '9.4'
 install:
     - pip install -r requirements.txt
-    - pip install -r requirements/tests.txt
+    - pip install -r requirements/development.txt
 before_script:
     - psql -c 'CREATE DATABASE lmstfy;' -U postgres
 script:
