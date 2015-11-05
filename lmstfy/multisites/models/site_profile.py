@@ -13,6 +13,9 @@ class SiteProfile(models.Model):
         primary_key=True,
     )
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     objects = SiteProfileManager()
 
     class Meta:
