@@ -22,4 +22,4 @@ clean_migrations:
 # target: test - execute project related tests including coding convention and unittest
 test:
 	flake8 lmstfy/
-	lmstfy/manage.py test -v 2
+	lmstfy/manage.py test lmstfy/ -v 2
