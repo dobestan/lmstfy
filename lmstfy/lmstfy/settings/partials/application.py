@@ -23,6 +23,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'multisites',
     'search',
@@ -86,3 +87,9 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# Sites Framework
+# https://docs.djangoproject.com/en/1.8/ref/contrib/sites/
+
+SITE_ID = 1
