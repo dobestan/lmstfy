@@ -4,6 +4,8 @@ from .partials import *
 INSTALLED_APPS += (
     'django_extensions',
     'debug_toolbar',
+
+    'django_nose',
 )
 
 
@@ -12,3 +14,9 @@ INSTALLED_APPS += (
 
 # Always use IPython for shell_plus
 SHELL_PLUS = "ipython"
+
+
+# django-nose
+# https://django-nose.readthedocs.org
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
