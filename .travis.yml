@@ -1,18 +1,21 @@
 language: python
 python:
-    - '3.3'
-    - '3.4'
-    - '3.5'
+- '3.3'
+- '3.4'
+- '3.5'
 addons:
-    postgresql: '9.4'
+  postgresql: '9.4'
 install:
-    - pip install -r requirements.txt
-    - pip install -r requirements/development.txt
-    - pip install coveralls
+- pip install -r requirements.txt
+- pip install -r requirements/development.txt
+- pip install coveralls
 before_script:
-    - psql -c 'CREATE DATABASE lmstfy;' -U postgres
+- psql -c 'CREATE DATABASE lmstfy;' -U postgres
 script:
-    - make migrate
-    - make test
+- make migrate
+- make test
 after_success:
-    - coveralls
+- coveralls
+notifications:
+  slack:
+    secure: oGO5jBX1IsOynAkh1R+jg4nzQ74Bk/sp9wxJYajcpw7Jj33ydXgHnVEH3oDSV4dstDidhNYuJd/gN26Dg1vy5fgJWczDBIDFeEV+r9COgyiUmeh8fSwx/kewnALbmwWiDfFbCpTbdrhHmRPAcIe6t7vKGsberFf1nNA0u5WzuQZWI1Tzb8umEeERD5WDPvFpVblCKTmo5DIbTeJCV0/xlC3vbqV54C0AbMkp8JVIfv5eqk03Hf7EqbUNJU9ZVTfvdozcbFMDmAcel1wHwZpEXkXLq83r8P5GpDW8m6pVmrIWxcaQyr2xybCX8PI6o643ADGBKbUwgzNKoUYCmBN/gk7a0BSyUWILsPhsbE4ygcnGV9J/6K0Uhpn4WKCYYeEqe4gPiIGIOMrxfISJBgsQXRMh5/TvnuFo8OyhUqumPZxiL62JMyUSDPP2gsno0VdOZg4FvwKcOTJeyh/uK5aalHNWJnzySgz6RtfGi6cdDNpqEMued6Q/k9uVoTRsvMJRpx/pDcg2q9Aip1kav0NBGS73RqXM/uSk/mw2e0RRu81QQYxRVJItdp13CD7/8CVGKOVQVNLvvGaUhyvcWXNkqgasXhsKADqvwf+Z17XR2SZim5Py9Gulh+0fOMATyH5hHKKqkkpHSPhzE0ttgzgj1n+3jWZtuFom73ffuU6dLTs=
