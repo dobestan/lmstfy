@@ -13,6 +13,12 @@ class SiteProfile(models.Model):
         primary_key=True,
     )
 
+    provider_name = models.CharField(
+        max_length=8,
+    )
+    provider_url = models.URLField()
+    provider_search_url = models.URLField()
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -24,3 +30,8 @@ class SiteProfile(models.Model):
 
     def __str__(self):
         return self.site.__str__()
+
+    def get_search_result_url(self, query):
+        return self.provider_search_url.format(
+            query=query,
+        )
