@@ -45,7 +45,9 @@ ROOT_URLCONF = 'lmstfy.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,5 +93,9 @@ USE_TZ = True
 
 # Sites Framework
 # https://docs.djangoproject.com/en/1.8/ref/contrib/sites/
-
-SITE_ID = 1
+#
+# https://docs.djangoproject.com/en/1.8/ref/contrib/sites/#get-current-site-shortcut
+# get_current_site method will now lookup the current site
+# based on request.get_host() if the SITE_ID setting is not defined.
+#
+# SITE_ID = 1
