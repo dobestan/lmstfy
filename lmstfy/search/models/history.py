@@ -46,6 +46,10 @@ class History(models.Model):
         if not self.hash_id:
             self._create_hash_id()
 
+    def get_absolute_url(self):
+        # TODO: refactor using django.core.urlresolvers.reverse
+        return "/%s/" % (self.hash_id, )
+
     def _create_hash_id(self):
         from search.utils.hash_id import get_encoded_hashid
 

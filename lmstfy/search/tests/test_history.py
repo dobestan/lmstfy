@@ -17,18 +17,18 @@ class HistoryTestCase(TestCase):
             content='test_query',
         )
 
-    def test_history_hash_id(self):
-        """History should have valid hash_id."""
-
-        history = History.objects.create(
+        self.history = History.objects.create(
             site=self.site,
             query=self.query,
         )
 
-        self.assertIsNotNone(history.hash_id)
+    def test_hash_id(self):
+        """History should have valid hash_id."""
+
+        self.assertIsNotNone(self.history.hash_id)
         self.assertEqual(
-            history.hash_id,
-            get_encoded_hashid(history),
+            self.history.hash_id,
+            get_encoded_hashid(self.history),
         )
 
         # History should have valid hash_id on post_save "immediately".
@@ -40,4 +40,21 @@ class HistoryTestCase(TestCase):
                 site=self.site,
                 query=self.query,
             ).hash_id
+        )
+
+    def test_get_absolute_url(self):
+        """History should have absolute_url."""
+
+        self.assertIsNotNone(
+            self.history.get_absolute_url(),
+        )
+
+        # History indicates unique histories(logs) instance for every search by user.
+        # should have different absolute_url whether both history has same "site" and "query".
+        self.assertNotEqual(
+            self.history.get_absolute_url(),
+            History.objects.create(
+                site=self.site,
+                query=self.query,
+            ).get_absolute_url(),
         )
