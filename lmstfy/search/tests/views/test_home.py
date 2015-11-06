@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.test.client import Client
 
 
-class HomeViewTestCase(TestCase):
+class SearchHomeViewTestCase(TestCase):
 
     def setUp(self):
 
@@ -14,8 +14,12 @@ class HomeViewTestCase(TestCase):
             domain='testserver',
         )
 
+        # Django caches the current Site object.
+        # Explicitly clear cache to prevent from potential errors on test.
+        Site.objects.clear_cache()
+
         self.client = Client()
-        self.response = self.client.get(reverse('home'))
+        self.response = self.client.get(reverse('search:home'))
 
     def test_request(self):
 

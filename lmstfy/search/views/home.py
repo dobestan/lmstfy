@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.sites.shortcuts import get_current_site
 
 
-class Home(DetailView):
+class SearchHomeView(DetailView):
     template_name = "base.html"
     context_object_name = 'site'
 

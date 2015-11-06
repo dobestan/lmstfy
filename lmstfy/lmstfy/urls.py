@@ -1,11 +1,14 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from lmstfy.views import Home
+from search.views import SearchHomeView, SearchResultView
 
 
 urlpatterns = [
     url(r'^lmstfy/', include(admin.site.urls)),
 
-    url(r'^$', Home.as_view(), name='home'),
+    url(r'^', include([
+        url(r'^$', SearchHomeView.as_view(), name='home'),
+        url(r'^(?P<hash_id>\w+)/$', SearchResultView.as_view(), name='result'),
+    ], namespace='search', app_name='search')),
 ]
