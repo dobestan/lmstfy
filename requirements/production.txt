@@ -2,3 +2,4 @@ Django==1.8.5
 dj-database-url
 psycopg2
 raven
+hashids
