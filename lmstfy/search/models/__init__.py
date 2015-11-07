@@ -1,2 +1,2 @@
 from .query import Query
-from .history import History
+from .result import Result

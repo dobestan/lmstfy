@@ -4,11 +4,11 @@ from django.contrib.sites.models import Site
 from search.models import Query
 
 
-class HistoryManager(models.Manager):
+class ResultManager(models.Manager):
     pass
 
 
-class History(models.Model):
+class Result(models.Model):
 
     site = models.ForeignKey(
         Site,
@@ -28,7 +28,7 @@ class History(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    objects = HistoryManager()
+    objects = ResultManager()
 
     class Meta:
         pass
@@ -41,7 +41,7 @@ class History(models.Model):
         )
 
     def save(self, *args, **kwargs):
-        super(History, self).save(*args, **kwargs)
+        super(Result, self).save(*args, **kwargs)
 
         if not self.hash_id:
             self._create_hash_id()
