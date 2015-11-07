@@ -5,8 +5,20 @@
     <title></title>
   </head>
   <body>
-    <a href="{{ site.domain }}">
-      {{ site.name }}
+    <a href="{{ current_site.domain }}">
+      {{ current_site.name }}
+
+      <div>
+        <ul>
+          {% for site in sites %}
+          <li>
+            <a href="{{ site.domain }}">
+              {{ site.name }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </a>
   </body>
 </html>

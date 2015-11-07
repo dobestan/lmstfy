@@ -13,6 +13,11 @@ class SearchBaseTestCase(TestCase):
             domain='testserver',
         )
 
+        self.another_site = Site.objects.create(
+            name='test_another_site_name',
+            domain='test_another_site_domain',
+        )
+
         # Django caches the current Site object.
         # Explicitly clear cache to prevent from potential errors on test.
         Site.objects.clear_cache()
