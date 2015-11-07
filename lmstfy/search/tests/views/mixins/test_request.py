@@ -10,11 +10,6 @@ class SearchRequestTestCaseMixin(object):
             200,
         )
 
-        self.assertEqual(
-            self.response.context_data.get('current_site'),
-            self.site,
-        )
-
         self.assertContains(
             self.response,
             self.site.name,
@@ -22,14 +17,6 @@ class SearchRequestTestCaseMixin(object):
         self.assertContains(
             self.response,
             self.site.domain,
-        )
-
-        self.assertIsNotNone(
-            self.response.context_data.get('sites', None),
-        )
-        self.assertEqual(
-            list(self.response.context_data.get('sites', None)),
-            list(Site.objects.all()),
         )
 
         for site in Site.objects.all():
