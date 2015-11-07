@@ -19,6 +19,10 @@
           {% endfor %}
         </ul>
       </div>
+
+      {% if result %}
+        {{ result.query.content }}
+      {% endif %}
     </a>
   </body>
 </html>

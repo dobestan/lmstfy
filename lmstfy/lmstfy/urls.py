@@ -9,6 +9,6 @@ urlpatterns = [
 
     url(r'^', include([
         url(r'^$', SearchHomeView.as_view(), name='home'),
-        url(r'^(?P<hash_id>\w+)/$', SearchResultView.as_view(), name='result'),
+        url(r'^(?P<slug>\w+)/$', SearchResultView.as_view(), name='result'),
     ], namespace='search', app_name='search')),
 ]

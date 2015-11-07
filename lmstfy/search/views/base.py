@@ -1,5 +1,5 @@
-from django.views.generic import TemplateView
+from django.views.generic import View
 
 
-class SearchBaseView(TemplateView):
+class SearchBaseView(View):
     template_name = "base.html"
