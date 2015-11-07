@@ -5,4 +5,4 @@ class SearchAppConfig(AppConfig):
     name = 'search'
 
     def ready(self):
-        pass
+        from search.signals.pre_save import pre_save_history
