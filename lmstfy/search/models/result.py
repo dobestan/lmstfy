@@ -5,7 +5,12 @@ from search.models import Query
 
 
 class ResultManager(models.Manager):
-    pass
+
+    def get_or_none(self, *args, **kwargs):
+        try:
+            return self.get(*args, **kwargs)
+        except self.model.DoesNotExist:
+            return None
 
 
 class Result(models.Model):
