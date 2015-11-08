@@ -55,6 +55,16 @@ class SearchResultViewTestCase(SearchBaseTestCase, SearchRequestTestCaseMixin):
             History.objects.count(),
         )
 
+        # Created History instance should have valid site, query information.
+        self.assertEqual(
+            self.site,
+            History.objects.latest().site,
+        )
+        self.assertEqual(
+            self.query,
+            History.objects.latest().query,
+        )
+
         # New Random Count Requests on SearchResultView
         current_history_count = History.objects.count()
         request_counts = randint(1, 100)
