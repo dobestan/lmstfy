@@ -3,16 +3,13 @@ from django.contrib.sites.models import Site
 
 from selenium import webdriver
 
+from functional_tests.utils.selenium import get_selenium_driver
+
 
 class APITestCase(LiveServerTestCase):
 
     def setUp(self):
-        # FIXME: Selenium firefox driver may fail on no display devices.
-        # TODO: Refactor conditional self.driver depends on DJANGO_SETTINGS_MODULE.
-        try:
-            self.driver = webdriver.Firefox()
-        except:
-            self.driver = webdriver.PhantomJS()
+        self.driver = get_selenium_driver()
 
         # FIXME: Should refactor creating a site with live_server_url.
         #
