@@ -8,7 +8,11 @@ class APITestCase(LiveServerTestCase):
 
     def setUp(self):
         # FIXME: Selenium firefox driver may fail on no display devices.
-        self.driver = webdriver.Firefox()
+        # TODO: Refactor conditional self.driver depends on DJANGO_SETTINGS_MODULE.
+        try:
+            self.driver = webdriver.Firefox()
+        except:
+            self.driver = webdriver.PhantomJS()
 
         # FIXME: Should refactor creating a site with live_server_url.
         #
