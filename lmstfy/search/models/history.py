@@ -27,7 +27,10 @@ class History(models.Model):
     objects = HistoryManager()
 
     class Meta:
-        pass
+        get_latest_by = 'created_at'
+        ordering = [
+            '-created_at',
+        ]
 
     def __str__(self):
         return '"{query}" on {site_name} visited at {created_at}'.format(

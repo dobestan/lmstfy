@@ -48,3 +48,30 @@ class HistoryTestCase(TestCase):
             self.history.query,
             self.query,
         )
+
+    def test_order(self):
+        """History should order in created_at DESC order."""
+
+        from random import randint
+
+        history_list = list()
+        history_counts = randint(1, 100)
+
+        history_list.append(self.history)
+
+        for i in range(1, history_counts + 1):
+            history = History.objects.create(
+                result=self.result,
+            )
+            history_list.append(history)
+
+        self.assertEqual(
+            History.objects.latest(),
+            history,
+        )
+
+        history_list.reverse()
+        self.assertEqual(
+            list(History.objects.all()),
+            history_list,
+        )
