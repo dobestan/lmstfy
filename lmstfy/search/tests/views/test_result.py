@@ -39,6 +39,35 @@ class SearchResultViewTestCase(SearchBaseTestCase, SearchRequestTestCaseMixin):
             self.query.content,
         )
 
+        # SearchResultView should return result only in current site.
+        self.result_in_another_site = Result.objects.create(
+            site=self.another_site,
+            query=self.query,
+        )
+
+        self.response = self.client.get(
+            reverse('search:result', kwargs={'slug': self.result.hash_id})
+        )
+
+        self.assertEqual(
+            self.response.status_code,
+            200,
+        )
+        self.assertEqual(
+            self.response.context_data.get('result'),
+            self.result,
+        )
+
+        self.result.delete()
+        self.response = self.client.get(
+            reverse('search:result', kwargs={'slug': self.result.hash_id})
+        )
+
+        self.assertEqual(
+            self.response.status_code,
+            404,
+        )
+
     def test_history(self):
         """History instance should be created on request on SearchResultView."""
 

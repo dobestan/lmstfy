@@ -1,3 +1,4 @@
+from django.contrib.sites.shortcuts import get_current_site
 from django.views.generic.detail import DetailView
 
 from .base import SearchBaseView
@@ -17,3 +18,13 @@ class SearchResultView(SearchBaseView, DetailView):
         )
 
         return super(SearchResultView, self).dispatch(*args, **kwargs)
+
+    def get_queryset(self):
+        """SearchResultView queryset should return results only in current_site."""
+
+        queryset = super(SearchResultView, self).get_queryset()
+
+        current_site = get_current_site(self.request)
+        return queryset.filter(
+            site=current_site,
+        )
