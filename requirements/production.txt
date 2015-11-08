@@ -5,3 +5,4 @@ raven
 hashids
 djangorestframework
 markdown
+django-rest-swagger
