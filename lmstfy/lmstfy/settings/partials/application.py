@@ -25,6 +25,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    'rest_framework',
+
     'multisites',
     'search',
 )

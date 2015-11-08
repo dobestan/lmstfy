@@ -3,3 +3,5 @@ dj-database-url
 psycopg2
 raven
 hashids
+djangorestframework
+markdown
